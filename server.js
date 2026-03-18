@@ -1,5 +1,6 @@
 const fs = require("fs");
 const express = require("express");
+const path = require("path");
 const cors = require("cors");
 const app = express();
 const PORT = 3000;
@@ -55,11 +56,11 @@ app.delete("/api/usuarios/:email", (req, res) => {
 });
 
 // Faz o Express servir os arquivos da pasta public
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 
 // Rota para a raiz (/) entregar o login.html
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/public/login.html");
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 app.listen(PORT, () => {
