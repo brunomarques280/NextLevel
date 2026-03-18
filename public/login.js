@@ -4,30 +4,29 @@ const loginInput = document.getElementById("login-input");
 loginForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const email = loginInput.value;
+  const emailInformado = loginInput.value.trim();
 
-  fetch("/api/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ email: email }),
-  })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        alert("E-mail não encontrado!");
-        throw new Error("Usuário inválido");
-      }
-    })
-    .then((usuario) => {
-      console.log("Sucesso:", usuario);
-      localStorage.setItem("usuarioLogado", JSON.stringify(usuario));
+  // 1. Busca os usuários que foram salvos no LocalStorage pelo script.js
+  const dadosLocal = localStorage.getItem("usuarios_db");
 
-      window.location.href = "dashboard.html";
-    })
-    .catch((erro) => {
-      console.error("Erro no login:", erro);
-    });
+  // Se não tiver nada no LocalStorage, cria um objeto vazio para não dar erro
+  const dados = dadosLocal ? JSON.parse(dadosLocal) : { usuarios: [] };
+
+  // 2. Procura na lista de usuários se existe o e-mail digitado
+  const usuarioEncontrado = dados.usuarios.find(
+    (u) => u.email === emailInformado,
+  );
+
+  if (usuarioEncontrado) {
+    // 3. SE ENCONTRAR: Salva os dados do usuário logado na sessão e vai para o dashboard
+    console.log("Login realizado com sucesso:", usuarioEncontrado);
+    localStorage.setItem("usuarioLogado", JSON.stringify(usuarioEncontrado));
+
+    alert(`Bem-vindo de volta, ${usuarioEncontrado.nome}!`);
+    window.location.href = "dashboard.html";
+  } else {
+    // 4. SE NÃO ENCONTRAR: Avisa o usuário
+    alert("E-mail não encontrado! Verifique se você já se cadastrou.");
+    console.error("Erro no login: E-mail não consta no banco de dados local.");
+  }
 });
