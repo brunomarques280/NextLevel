@@ -54,6 +54,14 @@ app.delete("/api/usuarios/:email", (req, res) => {
   res.json({ mensagem: "Usuário removido com sucesso!" });
 });
 
+// Faz o Express servir os arquivos da pasta public
+app.use(express.static("public"));
+
+// Rota para a raiz (/) entregar o login.html
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/public/login.html");
+});
+
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
