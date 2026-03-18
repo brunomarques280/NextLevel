@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NextLevel - Cadastro</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card">
+        <h1>Bem-vindo!</h1>
+        <p>NextLevel</p>
+
+        <form id="formCadastro">
+          <div class="input-group-nome">
+            <label for="input-nome">Nome</label>
+            <input
+              type="text"
+              id="input-nome"
+              placeholder="Seu nome completo"
+              required
+            />
+          </div>
+
+          <div class="input-group-email">
+            <label for="input-email">E-mail</label>
+            <input
+              type="email"
+              id="input-email"
+              placeholder="exemplo@email.com"
+              required
+            />
+          </div>
+
+          <button type="submit" class="btn-principal">Criar conta</button>
+        </form>
+
+        <div class="footer-link">
+          Já tem uma conta? <a href="login.html">Faça login aqui</a>
+        </div>
+
+        <div id="lista-usuarios">
+          <h2>Usuários Cadastrados</h2>
+          <ul id="usuarios-ul"></ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

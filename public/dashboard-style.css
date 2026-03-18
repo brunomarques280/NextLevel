@@ -1,0 +1,143 @@
+body {
+  background-color: #1a1a1a;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.container {
+  background-color: #2d2d2d;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  background-color: #333333;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: left;
+  transition: transform 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-tarefas {
+  border-left: 6px solid #4facfe;
+}
+
+.card-treinos {
+  border-left: 6px solid #4caf50;
+}
+
+.card input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background-color: #1a1a1a;
+  color: white;
+  margin-bottom: 10px;
+  outline: none;
+}
+
+.card input:focus {
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+.card button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card button:hover {
+  filter: brightness(1.2);
+  transform: scale(1.02);
+}
+
+ul {
+  list-style: none;
+  margin-top: 20px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+li {
+  background: #262626;
+  padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: surgir 0.4s ease forwards;
+}
+
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.btn-del {
+  background: transparent !important;
+  color: #ff4b2b !important;
+  width: auto !important;
+  padding: 0 !important;
+  font-size: 1.2rem;
+}
+
+#btn-sair {
+  background-color: transparent;
+  color: #ff4b2b;
+  border: 1px solid #ff4b2b;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: 0.3s;
+}
+
+#btn-sair:hover {
+  background-color: #ff4b2b;
+  color: white;
+}
+
+li.concluido span {
+  text-decoration: line-through;
+  opacity: 0.6;
+  color: #888;
+}
+
+li span {
+  cursor: pointer;
+  flex-grow: 1;
+}

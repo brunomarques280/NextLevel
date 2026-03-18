@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Painel - NextLevel</title>
+    <link rel="stylesheet" href="dashboard-style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Painel NextLevel</h1>
+
+      <div class="info-box">
+        <p id="boas-vindas">Carregando dados...</p>
+      </div>
+
+      <div class="card card-tarefas">
+        <h2>Tarefas do dia <span id="cont-tarefas">0</span></h2>
+        <input
+          type="text"
+          id="input-tarefa"
+          placeholder="Adicione suas tarefas do dia!"
+        />
+        <button id="btn-add-tarefa">Adicionar</button>
+        <ul id="lista-tarefas"></ul>
+      </div>
+
+      <div class="card card-treinos">
+        <h2>Treinos do dia <span id="cont-treinos">0</span></h2>
+        <input
+          type="text"
+          id="input-treino"
+          placeholder="Adicione seus treinos do dia!"
+        />
+        <button id="btn-add-treino">Adicionar</button>
+        <ul id="lista-treinos"></ul>
+      </div>
+
+      <button id="btn-sair">Sair da Conta</button>
+    </div>
+
+    <script src="dashboard.js"></script>
+  </body>
+</html>
