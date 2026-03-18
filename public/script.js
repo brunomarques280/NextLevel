@@ -19,7 +19,8 @@ formulario.addEventListener("submit", (event) => {
     return;
   }
 
-  fetch("http://localhost:3000/api/usuarios", {
+  // MUDANÇA AQUI: Removemos o localhost
+  fetch("/api/usuarios", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(dadosParaEnviar),
@@ -35,7 +36,8 @@ formulario.addEventListener("submit", (event) => {
 });
 
 function carregarUsuarios() {
-  fetch("http://localhost:3000/api/usuarios")
+  // MUDANÇA AQUI: Removemos o localhost
+  fetch("/api/usuarios")
     .then((res) => res.json())
     .then((usuarios) => {
       listaUl.innerHTML = "";
@@ -54,7 +56,8 @@ function carregarUsuarios() {
 
 function deletarUsuario(email) {
   if (confirm("Deseja remover este usuário?")) {
-    fetch(`http://localhost:3000/api/usuarios/${email}`, {
+    // MUDANÇA AQUI: Removemos o localhost
+    fetch(`/api/usuarios/${email}`, {
       method: "DELETE",
     }).then(() => carregarUsuarios());
   }
