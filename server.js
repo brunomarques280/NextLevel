@@ -9,17 +9,32 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
 
+// Localização exata do arquivo na raiz do projeto
+const DADOS_PATH = path.join(process.cwd(), "dados.json");
+
 const lerDados = () => {
   try {
-    const conteudo = fs.readFileSync("./dados.json", "utf-8");
+    // Verifica se o arquivo existe antes de tentar ler para evitar o erro 500
+    if (!fs.existsSync(DADOS_PATH)) {
+      console.log("Arquivo dados.json não encontrado, criando um novo...");
+      return { usuarios: [] };
+    }
+    const conteudo = fs.readFileSync(DADOS_PATH, "utf-8");
     return JSON.parse(conteudo || '{"usuarios": []}');
   } catch (erro) {
+    console.error("Erro na leitura:", erro);
     return { usuarios: [] };
   }
 };
 
 const salvarDados = (dados) => {
-  fs.writeFileSync("./dados.json", JSON.stringify(dados, null, 2));
+  try {
+    // Tenta salvar. Nota: Na Vercel, isso é temporário (Serverless)
+    fs.writeFileSync(DADOS_PATH, JSON.stringify(dados, null, 2));
+  } catch (erro) {
+    console.error("Erro ao salvar:", erro);
+    // Não deixamos o erro derrubar o servidor (evita o status 500 no front)
+  }
 };
 
 app.get("/api/usuarios", (req, res) => {
