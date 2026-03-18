@@ -1,17 +1,8 @@
 {
   "version": 2,
+  "public": true,
   "rewrites": [
     { "source": "/", "destination": "/public/login.html" },
     { "source": "/api/(.*)", "destination": "/server.js" }
-  ],
-  "routes": [
-    {
-      "src": "/public/(.*)",
-      "dest": "/public/$1"
-    },
-    {
-      "src": "/api/(.*)",
-      "dest": "/server.js"
-    }
   ]
 }
